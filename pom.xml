@@ -74,7 +74,14 @@
 	<dependency> <!-- JSTL Java Standard Tag Library -->
 		<groupId>javax.servlet</groupId>
 		<artifactId>jstl</artifactId>
-		<version>1.2</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-jasper</artifactId>
+		<version>9.0.64</version><!--$NO-MVN-MAN-VER$ -->
+		<scope>provided</scope>
 	</dependency>
 	</dependencies>
 
