@@ -71,7 +71,7 @@ public class RatingServiceImpl implements RatingService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Rating findById(Integer id) {
+	public Rating findById(Long id) {
 		try {
 			Optional<Rating> ratingToFind = dao.findById(id);
 			return ratingToFind.get();

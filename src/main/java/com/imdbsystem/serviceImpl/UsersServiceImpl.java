@@ -77,12 +77,23 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Users findById(Integer id) {
+	public Users findById(Long id) {
 		try {
 			Optional<Users> userToFind = dao.findById(id);
 			return userToFind.get();
 		} catch (Exception e) {
 			log.error("UsersServiceImpl: Ocurred an error in findById method");
+		}
+		return new Users();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Users findByEmail(String email) {
+		try {
+			return dao.findByEmail(email);
+		} catch (Exception e) {
+			log.error("UsersServiceImpl: Ocurred an error in findByEmail method");
 		}
 		return new Users();
 	}

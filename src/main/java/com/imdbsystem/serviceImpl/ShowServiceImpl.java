@@ -71,7 +71,7 @@ public class ShowServiceImpl implements ShowService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Show findById(Integer id) {
+	public Show findById(Long id) {
 		try {
 			Optional<Show> showToFind = dao.findById(id);
 			return showToFind.get();
