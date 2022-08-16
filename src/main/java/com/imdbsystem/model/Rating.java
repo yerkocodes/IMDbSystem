@@ -1,5 +1,6 @@
 package com.imdbsystem.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
 public class Rating {
 
 	@Id// indica cual atributo es el id columna en la base de datos
