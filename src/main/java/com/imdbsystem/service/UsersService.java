@@ -10,6 +10,7 @@ public interface UsersService {
 	public Users add(Users user);
 	public Users update(Users user);
 	public Boolean delete(Users user);
-	public Users findById(Integer id);
+	public Users findById(Long id);
+	public Users findByEmail(String email);
 
 }

@@ -14,6 +14,6 @@ public interface ShowService {
 
 	public Boolean delete(Show show);
 
-	public Show findById(Integer id);
+	public Show findById(Long id);
 
 }

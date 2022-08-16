@@ -10,6 +10,6 @@ public interface RatingService {
 	public Rating add(Rating rating);
 	public Rating update(Rating rating);
 	public Boolean delete(Rating rating);
-	public Rating findById(Integer id);
+	public Rating findById(Long id);
 
 }
