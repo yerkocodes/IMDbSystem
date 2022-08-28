@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.imdbsystem.ImDbSystemApplication;
 import com.imdbsystem.dao.UsersRepository;
+import com.imdbsystem.model.Role;
 import com.imdbsystem.model.Users;
 import com.imdbsystem.service.UsersService;
 
@@ -22,6 +24,10 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Autowired
 	private UsersRepository dao;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 
 	@Override
 	@Transactional(readOnly = true)
@@ -38,17 +44,18 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	@Transactional
 	public Users add(Users user) {
+		Users response = new Users();
 		try {
-			if (user.getPassword() == user.getPasswordConfirmation()) {
-				Users userSaved = dao.save(user);
-				return userSaved;
-			} else {
-				throw new Error("Password don't match");
+			if (user.getPassword().equals(user.getPasswordConfirmation())) {
+				user.setRole(Role.USER);
+				user.setPassword(encoder.encode(user.getPassword()));
+				user.setPasswordConfirmation(encoder.encode(user.getPasswordConfirmation()));
+				response = dao.save(user);
 			}
 		} catch (Exception e) {
 			log.error("UsersServiceImpl: Ocurred an error in add method");
 		}
-		return new Users();
+		return response;
 	}
 
 	@Override

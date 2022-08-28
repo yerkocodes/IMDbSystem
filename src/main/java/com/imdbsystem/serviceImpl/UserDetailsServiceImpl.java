@@ -1,4 +1,4 @@
-package com.imdbsystem.service;
+package com.imdbsystem.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.imdbsystem.model.Users;
-import com.imdbsystem.serviceImpl.UsersServiceImpl;
 
 @Service
-public class AuthServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 	// inyeccion de dependencias para la interfaz UsuarioMapper y dispoponibilizar
 	// cuando se requiera
